@@ -14,7 +14,7 @@ if(mysqli_num_rows($query) == 0){
 } else {
     while($row = mysqli_fetch_assoc($query)){
         echo '<div class="userquery">';
-        include 'includes/profile_picture.php';
+        include 'controller/profile_picture.php';
         echo '<br>';
         echo '<a class="profilelink" href="profile.php?id=' . $row['user_id'] .'">' . $row['user_firstname'] . ' ' . $row['user_lastname'] . '<a>';
         echo '</div>';

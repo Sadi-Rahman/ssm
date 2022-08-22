@@ -11,7 +11,7 @@ echo '<br>';
 // Profile Info & View
 $width = '168px';
 $height = '168px';
-include 'includes/profile_picture.php';
+include '../controller/profile_picture.php';
 echo '<br>';
 // Gender
 if($row['user_gender'] == "M")

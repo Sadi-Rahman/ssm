@@ -1,5 +1,5 @@
 <?php 
-require 'functions/functions.php';
+require '../functions/functions.php';
 session_start();
 ob_start();
 // Check whether user is logged on or not
@@ -24,7 +24,7 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
 <html>
 <head>
     <title>Social Network</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
     <style>
     .post{
         margin-right: 50px;
@@ -61,7 +61,7 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
 </head>
 <body>
     <div class="container">
-        <?php include 'includes/navbar.php'; ?>
+        <?php include '../controller/navbar.php'; ?>
         <h1>Profile</h1>
         <?php
         $postsql;
@@ -148,13 +148,13 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
                     echo 'There is no public posts to show.';
                     echo '</div>';
                 }
-                include 'includes/profile.php';
+                include '../controller/profile.php';
             } else {
                 while($row = mysqli_fetch_assoc($postquery)){
-                    include 'includes/post.php';
+                    include '../controller/post.php';
                 }
                 // Profile Info
-                include 'includes/profile.php';
+                include '../controller/profile.php';
                 ?>
                 <br>
                 <?php if($flag == 0){?>
@@ -213,7 +213,7 @@ function validateNumber(){
 }
 </script>
 </html>
-<?php include 'functions/upload.php'; ?>
+<?php include '../functions/upload.php'; ?>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A form is posted

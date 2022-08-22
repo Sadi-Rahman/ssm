@@ -1,6 +1,6 @@
 <?php
 //
-require 'functions/functions.php';
+require '../functions/functions.php';
 session_start();
 // Check whether user is logged on or not
 if (!isset($_SESSION['user_id'])) {
@@ -15,18 +15,18 @@ $conn = connect();
 <html>
 <head>
     <title>Social Network</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 </head>
 <body>
     <div class="container">
-        <?php include 'includes/navbar.php'; ?>
+        <?php include '../controller/navbar.php'; ?>
         <h1>Search Results</h1>
         <?php
             $location = $_GET['location'];
             $key = $_GET['query'];
             if($location == 'emails') {
                 $sql = "SELECT * FROM users WHERE users.user_email = '$key'";
-                include 'includes/userquery.php';
+                include '../controller/userquery.php';
             } else if($location == 'names') {
                 $name = explode(' ', $key, 2); // Break String into Array.
                 if(empty($name[1])) {
@@ -34,10 +34,10 @@ $conn = connect();
                 } else {
                     $sql = "SELECT * FROM users WHERE users.user_firstname = '$name[0]' AND users.user_lastname= '$name[1]'";
                 }
-                include 'includes/userquery.php';
-            } else if($location == 'hometowns') {
+                include '../controller/userquery.php';
+           } else if($location == 'hometowns') {
                 $sql = "SELECT * FROM users WHERE users.user_hometown = '$key'";
-                include 'includes/userquery.php';
+                include '../controller/userquery.php';
             } else if($location == 'posts') {
                 $sql = "SELECT posts.post_caption, posts.post_time, posts.post_public, users.user_firstname,
                                 users.user_lastname, users.user_id, users.user_gender, posts.post_id
@@ -76,7 +76,7 @@ $conn = connect();
                     echo '<br>';
                 }
                 while($row = mysqli_fetch_assoc($query)){
-                    include 'includes/post.php';
+                    include '../controller/post.php';
                     echo '<br>';
                 }
             }    

@@ -1,5 +1,5 @@
 <?php 
-require 'functions/functions.php';
+require '../functions/functions.php';
 session_start();
 if (isset($_SESSION['user_id'])) {
     header("location:home.php");
@@ -12,7 +12,7 @@ ob_start();
 <html>
 <head>
     <title>Social Network</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
     <style>
         .container{
             margin: 40px auto;
@@ -20,13 +20,13 @@ ob_start();
         }
         .content {
             padding: 30px;
-            background-color: white;
+            background-color: whitesmoke ;
             box-shadow: 0 0 5px #4267b2;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Pynch</h1>
+    <h1>Welcome Social Media</h1>
     <div class="container">
         <div class="tab">
             <button class="tablink active" onclick="openTab(event,'signin')" id="link1">Login</button>
@@ -49,7 +49,7 @@ ob_start();
             <div class="tabcontent" id="signup">
                 <form method="post" onsubmit="return validateRegister()">
                     <!--Package One-->
-                    <h2>Highly Required Information</h2>
+                    <small>* Required Information</small>
                     <hr>
                     <!--First Name-->
                     <label>First Name<span>*</span></label><br>
@@ -108,7 +108,7 @@ ob_start();
                     </select>
                     <select name="selectyear">
                     <?php
-                    for($i=2017; $i>=1900; $i--){
+                    for($i=2050; $i>=1900; $i--){
                         if($i == 1996){
                             echo '<option value="'. $i .'" selected>'. $i .'</option>';
                         }
@@ -129,9 +129,9 @@ ob_start();
                     <input type="text" name="userhometown" id="userhometown">
                     <br>
                     <!--Package Two-->
-                    <h2>Additional Information</h2>
+                   <!-- <h2>Additional Information</h2>
                     <hr>
-                    <!--Marital Status-->
+                    
                     <input type="radio" name="userstatus" value="S" id="singlestatus">
                     <label>Single</label>
                     <input type="radio" name="userstatus" value="E" id="engagedstatus">
@@ -139,16 +139,15 @@ ob_start();
                     <input type="radio" name="userstatus" value="M" id="marriedstatus">
                     <label>Married</label>
                     <br><br>
-                    <!--About Me-->
                     <label>About Me</label><br>
-                    <textarea rows="12" name="userabout" id="userabout"></textarea>
+                    <textarea rows="12" name="userabout" id="userabout"></textarea> -->
                     <br><br>
                     <input type="submit" value="Create Account" name="register">
                 </form>
             </div>
         </div>
     </div>
-    <script src="resources/js/main.js"></script>
+    <script src="../resources/js/main.js"></script>
 </body>
 </html>
 

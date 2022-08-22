@@ -1,5 +1,5 @@
 <?php 
-require 'functions/functions.php';
+require '../functions/functions.php';
 session_start();
 // Check whether user is logged on or not
 if (!isset($_SESSION['user_id'])) {
@@ -13,7 +13,7 @@ $conn = connect();
 <html>
 <head>
     <title>Social Media</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
     <style>
     .frame a{
         text-decoration: none;
@@ -26,7 +26,7 @@ $conn = connect();
 </head>
 <body>
     <div class="container">
-        <?php include 'includes/navbar.php'; ?>
+        <?php include '../controller/navbar.php'; ?>
         <h1>Friends</h1>
         <?php
             echo '<center>'; 
@@ -54,7 +54,7 @@ $conn = connect();
                     while($row = mysqli_fetch_assoc($query)){
                     echo '<div class="frame">';
                     echo '<center>';
-                    include 'includes/profile_picture.php';
+                    include '../controller/profile_picture.php';
                     echo '<br>';
                     echo '<a href="profile.php?id=' . $row['user_id'] . '">' . $row['user_firstname'] . ' ' . $row['user_lastname'] . '</a>';
                     echo '</center>';

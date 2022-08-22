@@ -1,9 +1,9 @@
 <?php 
-require 'functions/functions.php';
+require '../functions/functions.php';
 session_start();
 // Check whether user is logged on or not
 if (!isset($_SESSION['user_id'])) {
-    header("location:index.php");
+    header("location:../view/index.php");
 }
 $temp = $_SESSION['user_id'];
 session_destroy();
@@ -18,11 +18,11 @@ $conn = connect();
 <html>
 <head>
     <title>Social Media</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 </head>
 <body>
     <div class="container">
-        <?php include 'includes/navbar.php'; ?>
+        <?php include '../controller/navbar.php'; ?>
         <br>
         <div class="createpost">
             <form method="post" action="" onsubmit="return validatePost()" enctype="multipart/form-data">
@@ -38,7 +38,7 @@ $conn = connect();
                 <div class="createpostbuttons">
                     <!--<form action="" method="post" enctype="multipart/form-data" id="imageform">-->
                     <label>
-                        <img src="images/photo.png">
+                        <img src="../images/photo.png">
                         <input type="file" name="fileUpload" id="imagefile">
                         <!--<input type="submit" style="display:none;">-->
                     </label>
@@ -87,14 +87,14 @@ $conn = connect();
             $width = '40px'; // Profile Image Dimensions
             $height = '40px';
             while($row = mysqli_fetch_assoc($query)){
-                include 'includes/post.php';
+                include '../controller/post.php';
                 echo '<br>';
             }
         }
         ?>
         <br><br><br>
     </div>
-    <script src="resources/js/jquery.js"></script>
+    <script src="../resources/js/jquery.js"></script>
     <script>
         // Invoke preview when an image file is choosen.
         $(document).ready(function(){
@@ -146,10 +146,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') { // Form is Posted
     if($query){
         // Upload Post Image If a file was choosen
         if (!empty($_FILES['fileUpload']['name'])) {
-            echo 'FUUUQ';
+            echo 'EMPTY';
             // Retrieve Post ID
             $last_id = mysqli_insert_id($conn);
-            include 'functions/upload.php';
+            include '../functions/upload.php';
         }
         header("location: home.php");
     }

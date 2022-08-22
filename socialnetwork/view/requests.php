@@ -1,5 +1,5 @@
 <?php 
-require 'functions/functions.php';
+require '../functions/functions.php';
 session_start();
 // Check whether user is logged on or not
 if (!isset($_SESSION['user_id'])) {
@@ -13,11 +13,11 @@ $conn = connect();
 <html>
 <head>
     <title>Social Network</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 </head>
 <body>
     <div class="container">
-        <?php include 'includes/navbar.php'; ?>
+        <?php include '../controller/navbar.php'; ?>
         <h1>Friend Requests</h1>
         <?php
         // Responding to Request
@@ -35,7 +35,7 @@ $conn = connect();
                     echo '<br><br>';
                     echo '</div>';
                     echo '<br>';
-                    header("refresh:5; url=requests.php" );
+                    header("refresh:5; url=profile.php" );
                 }
                 else{
                     echo mysqli_error($conn);
@@ -52,7 +52,7 @@ $conn = connect();
                     echo '<br><br>';
                     echo '</div>';
                     echo '<br>';
-                    header("refresh:5; url=requests.php" );
+                    header("refresh:5; url=profile.php" );
                 }
             }
         }
@@ -77,7 +77,7 @@ $conn = connect();
             }
             while($row = mysqli_fetch_assoc($query)){
                 echo '<div class="userquery">';
-                include 'includes/profile_picture.php';
+                include '../controller/profile_picture.php';
                 echo '<br>';
                 echo '<a class="profilelink" href="profile.php?id=' . $row['user_id'] .'">' . $row['user_firstname'] . ' ' . $row['user_lastname'] . '<a>';
                 echo '<form method="get" action="requests.php">';

@@ -18,7 +18,7 @@ echo'</div>';
 echo '<br>';
 echo '<p class="caption">' . $row['post_caption'] . '</p>';
 echo '<center>'; 
-$target = glob("data/images/posts/" . $row['post_id'] . ".*");
+$target = glob("../data/images/posts/" . $row['post_id'] . ".*");
 if($target) {
     echo '<img src="' . $target[0] . '" style="max-width:580px">'; 
     echo '<br><br>';

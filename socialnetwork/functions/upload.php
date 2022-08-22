@@ -9,13 +9,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(exif_imagetype($_FILES["fileUpload"]["tmp_name"])){ // Check if the file is actually an image.
             if(isset($_POST['profile'])){
                 $success = 0;
-                $filepath = "data/images/profiles/" . $_SESSION['user_id'] . '.' . $filetype;
+                $filepath = ".../data/images/profiles/" . $_SESSION['user_id'] . '.' . $filetype;
                 if(move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $filepath)){
                     $sql5 = "INSERT INTO posts (post_caption, post_public, post_time, post_by)
                             VALUES ('" . $row['user_firstname'] . " " . $row['user_lastname'] . " has changed his profile picture.', 'N', NOW(), {$_SESSION['user_id']})";
                     $query5 = mysqli_query($conn, $sql5);
                     $last_id = mysqli_insert_id($conn);
-                    $filepath2 = "data/images/posts/" . $last_id . '.' . $filetype;
+                    $filepath2 = "../data/images/posts/" . $last_id . '.' . $filetype;
                     copy($filepath, $filepath2);
                     if(!$query5)
                         echo mysqli_error($conn);
@@ -24,12 +24,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                 }
                 if($success = 1)
-                    header("location:profile.php?id=" . $_SESSION['user_id']);
+                    header("location:../view/profile.php?id=" . $_SESSION['user_id']);
             }
             else if(isset($_POST['post'])){
-                $filepath = "data/images/posts/" . $last_id . '.' . $filetype;
+                $filepath = "../data/images/posts/" . $last_id . '.' . $filetype;
                 if(move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $filepath)){
-                    header("refresh:5; url=home.php");
+                    header("refresh:5; url=../view/home.php");
                 }
             }
         }
